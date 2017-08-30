@@ -5,7 +5,7 @@
  */
 package Telas;
 
-import Codigo.Bd;
+import Banco.Bd;
 import Codigo.Conta;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -42,9 +42,9 @@ MaskFormatter mascaraData;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        DataLabel = new javax.swing.JLabel();
+        DescricaoLabel = new javax.swing.JLabel();
+        ValorLabel = new javax.swing.JLabel();
         Desc_text = new javax.swing.JTextField();
         Valor_text = new javax.swing.JTextField();
         Novo = new javax.swing.JButton();
@@ -53,9 +53,6 @@ MaskFormatter mascaraData;
         Editar = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
         Salvar = new javax.swing.JButton();
-        data_erro = new javax.swing.JLabel();
-        desc_erro = new javax.swing.JLabel();
-        valor_erro = new javax.swing.JLabel();
         Data_text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -84,11 +81,11 @@ MaskFormatter mascaraData;
         });
         jScrollPane1.setViewportView(Tabela);
 
-        jLabel1.setText("Data");
+        DataLabel.setText("Data");
 
-        jLabel2.setText("Descrição");
+        DescricaoLabel.setText("Descrição");
 
-        jLabel3.setText("Valor R$");
+        ValorLabel.setText("Valor R$");
 
         Desc_text.setEnabled(false);
         Desc_text.addActionListener(new java.awt.event.ActionListener() {
@@ -167,23 +164,14 @@ MaskFormatter mascaraData;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
+                            .addComponent(DescricaoLabel)
+                            .addComponent(DataLabel)
+                            .addComponent(ValorLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Data_text, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(102, 102, 102)
-                                .addComponent(data_erro))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Desc_text, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(desc_erro))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Valor_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(valor_erro))))
+                            .addComponent(Data_text, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Desc_text, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Valor_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,24 +197,16 @@ MaskFormatter mascaraData;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(data_erro)
+                    .addComponent(DataLabel)
                     .addComponent(Data_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Desc_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(desc_erro)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(Valor_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(valor_erro)))
+                    .addComponent(DescricaoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Desc_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ValorLabel)
+                    .addComponent(Valor_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,9 +238,6 @@ MaskFormatter mascaraData;
         Valor_text.setText("");
         Desc_text.setText("");
         Data_text.requestFocus();
-        valor_erro.setText("*Campo Obrigatório");
-        desc_erro.setText("*Campo Obrigatório");
-        data_erro.setText("*Campo Obrigatório");
        
         // TODO add your handling code here:
     }//GEN-LAST:event_NovoActionPerformed
@@ -308,12 +285,9 @@ MaskFormatter mascaraData;
             Conta conta = new Conta();
             conta.setData(Data_text.getText());
             conta.setDescricao(Desc_text.getText());
-            String str = Valor_text.getText();
-            if(str.contains(",")){
-                str = str.replace(",",".");
-            }
-        conta.setValor(Float.parseFloat(str));
-        Bd bd = new Bd();
+            conta.setValor(Float.parseFloat(Valor_text.getText().replace(",",".")));
+            
+            Bd bd = new Bd();
         try {
             bd.inserir(conta);
         } catch (ParseException ex) {
@@ -338,11 +312,7 @@ MaskFormatter mascaraData;
         conta.setId(Tabela.getSelectedRow());
         conta.setData(Data_text.getText());
         conta.setDescricao(Desc_text.getText());
-        String str = Valor_text.getText();
-        if(str.contains(",")){
-            str = str.replace(",",".");
-        }
-        conta.setValor(Float.parseFloat(str));
+        conta.setValor(Float.parseFloat(Valor_text.getText().replace(",",".")));
         Bd bd = new Bd();
         try {
             bd.atualizar(conta);
@@ -410,12 +380,10 @@ MaskFormatter mascaraData;
         }catch (SQLException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultTableModel model = new DefaultTableModel();
-        model = (DefaultTableModel) this.Tabela.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.Tabela.getModel();
         model.setNumRows(0);
         for(int i = 0;i<array.size();i++){
-            Conta contas = new Conta();
-            contas = array.get(i);
+            Conta contas = array.get(i);
             model.addRow(new Object[]{contas.getData(),contas.getDescricao(),contas.getValor()});
         }
         this.Tabela.setModel(model);
@@ -423,22 +391,19 @@ MaskFormatter mascaraData;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Adicionar;
+    private javax.swing.JLabel DataLabel;
     private javax.swing.JTextField Data_text;
     private javax.swing.JTextField Desc_text;
+    private javax.swing.JLabel DescricaoLabel;
     private javax.swing.JButton Editar;
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Novo;
     private javax.swing.JButton Remover;
     private javax.swing.JButton Salvar;
     private javax.swing.JTable Tabela;
+    private javax.swing.JLabel ValorLabel;
     private javax.swing.JTextField Valor_text;
-    private javax.swing.JLabel data_erro;
-    private javax.swing.JLabel desc_erro;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel valor_erro;
     // End of variables declaration//GEN-END:variables
 
    

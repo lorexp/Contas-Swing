@@ -5,7 +5,7 @@
  */
 package Telas;
 
-import Codigo.Bd;
+import Banco.Bd;
 import Codigo.Conta;
 import java.sql.SQLException;
 import java.text.ParseException;

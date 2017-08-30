@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Codigo;
+package Banco;
 
+import Codigo.Conta;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
