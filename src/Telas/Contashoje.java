@@ -42,16 +42,14 @@ public class Contashoje extends javax.swing.JFrame {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         ArrayList<Conta> array = new ArrayList();   
         try {
-            array = bd.select_data(format.format(data));
+            array = bd.Selecionar_Por_Data(format.format(data));
         } catch (SQLException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultTableModel model = new DefaultTableModel();
-        model = (DefaultTableModel) this.Tabela.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.Tabela.getModel();
         model.setNumRows(0);
         for(int i = 0;i<array.size();i++){
-            Conta contas = new Conta();
-            contas = array.get(i);
+            Conta contas = array.get(i);
             model.addRow(new Object[]{contas.getData(),contas.getDescricao(),contas.getValor()});
         }
         this.Tabela.setModel(model);

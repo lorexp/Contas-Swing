@@ -23,6 +23,8 @@ import javax.swing.text.MaskFormatter;
  */
 public class Todascontas extends javax.swing.JFrame {
 MaskFormatter mascaraData;
+ArrayList<Conta> array = new ArrayList();
+Conta conta;
     /**
      * Creates new form Todascontas
      */
@@ -247,6 +249,7 @@ MaskFormatter mascaraData;
            Data_text.setEnabled(true);
            Desc_text.setEnabled(true);
            Valor_text.setEnabled(true);
+           conta = array.get(Tabela.getSelectedRow());
             // TODO add your handling code here:
     }//GEN-LAST:event_EditarActionPerformed
 
@@ -266,7 +269,7 @@ MaskFormatter mascaraData;
     private void RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverActionPerformed
         Bd bd = new Bd();
         try {
-            bd.deleta(Tabela.getSelectedRow());
+            bd.Deletar(array.get(Tabela.getSelectedRow()));
             this.pegatudo();
             Remover.setEnabled(false);
             Editar.setEnabled(false);
@@ -289,7 +292,7 @@ MaskFormatter mascaraData;
             
             Bd bd = new Bd();
         try {
-            bd.inserir(conta);
+            bd.Inserir(conta);
         } catch (ParseException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -308,14 +311,13 @@ MaskFormatter mascaraData;
     }//GEN-LAST:event_AdicionarActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-        Conta conta = new Conta();
-        conta.setId(Tabela.getSelectedRow());
+
         conta.setData(Data_text.getText());
         conta.setDescricao(Desc_text.getText());
         conta.setValor(Float.parseFloat(Valor_text.getText().replace(",",".")));
         Bd bd = new Bd();
         try {
-            bd.atualizar(conta);
+            bd.Atualizar(conta);
         } catch (SQLException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -374,9 +376,8 @@ MaskFormatter mascaraData;
     public void pegatudo(){
         Bd bd = new Bd();
         bd.getConnection();
-        ArrayList<Conta> array = new ArrayList();
         try {
-            array = bd.select_allconta();
+            array = bd.Selecionar_Contas();
         }catch (SQLException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
