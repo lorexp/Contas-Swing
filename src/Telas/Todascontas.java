@@ -8,6 +8,8 @@ package Telas;
 import Banco.Bd;
 import Codigo.Conta;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -285,14 +287,14 @@ Conta conta;
         if(Data_text.getText().isEmpty()|| Desc_text.getText().isEmpty()||Valor_text.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Preencha os campos corretamente!","Erro",JOptionPane.ERROR_MESSAGE);
        }else{
-            Conta conta = new Conta();
-            conta.setData(Data_text.getText());
-            conta.setDescricao(Desc_text.getText());
-            conta.setValor(Float.parseFloat(Valor_text.getText().replace(",",".")));
+            Conta conta_nova = new Conta();
+            conta_nova.setData(Data_text.getText());
+            conta_nova.setDescricao(Desc_text.getText());
+            conta_nova.setValor(Float.parseFloat(Valor_text.getText().replace(",",".")));
             
             Bd bd = new Bd();
         try {
-            bd.Inserir(conta);
+            bd.Inserir(conta_nova);
         } catch (ParseException ex) {
             Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -375,7 +377,6 @@ Conta conta;
     }
     public void pegatudo(){
         Bd bd = new Bd();
-        bd.getConnection();
         try {
             array = bd.Selecionar_Contas();
         }catch (SQLException ex) {

@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +48,8 @@ public class Bd {
         Connection con = null;
         ArrayList<Conta> lista = new ArrayList();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        
+        
         try{
             con = this.getConnection();
             PreparedStatement prepare = con.prepareStatement(SELECT_ALLCONTA);
