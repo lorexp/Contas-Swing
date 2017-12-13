@@ -1,0 +1,9 @@
+create table conta(
+id serial primary key,
+descricao char(255) not null,
+valor numeric(10,2) not null,
+data date not null
+)
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO vinicius;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO vinicius;
+

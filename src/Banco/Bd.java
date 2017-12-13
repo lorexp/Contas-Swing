@@ -31,7 +31,7 @@ public class Bd {
     { 
         Connection con = null;
         try{
-        con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vinicius","vinicius","12345678");
+        con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/firma","vinicius","12345678");
         }catch(SQLException e){
         }
         return con;
