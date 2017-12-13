@@ -13,7 +13,7 @@ public class Conta {
     private int id;
     private String data;
     private String descricao;
-    private float valor;
+    private double valor;
 
     /**
      * @return the data
@@ -46,14 +46,14 @@ public class Conta {
     /**
      * @return the valor
      */
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

@@ -375,6 +375,7 @@ Conta conta;
     }
     public void pegatudo(){
         Bd bd = new Bd();
+        
         try {
             array = bd.Selecionar_Contas();
         }catch (SQLException ex) {

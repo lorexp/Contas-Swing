@@ -46,8 +46,7 @@ public class Bd {
         Connection con = null;
         ArrayList<Conta> lista = new ArrayList();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        
-        
+ 
         try{
             con = this.getConnection();
             PreparedStatement prepare = con.prepareStatement(SELECT_ALLCONTA);
@@ -57,7 +56,7 @@ public class Bd {
                 conta.setId(resultset.getInt("id"));
                 conta.setData(format.format(resultset.getDate("data")));
                 conta.setDescricao(resultset.getString("descricao"));
-                conta.setValor(resultset.getFloat("valor"));
+                conta.setValor(resultset.getDouble("valor"));
                 lista.add(conta);
             }
         }catch(SQLException e){
@@ -91,7 +90,7 @@ public class Bd {
                 conta.setId(resultset.getInt("id"));
                 conta.setData(format.format(resultset.getDate("data")));
                 conta.setDescricao(resultset.getString("descricao"));
-                conta.setValor(resultset.getFloat("valor"));
+                conta.setValor(resultset.getDouble("valor"));
                 lista.add(conta);
             }
         }catch(SQLException e){
@@ -122,7 +121,7 @@ public class Bd {
             PreparedStatement prepare = con.prepareStatement(INSERT);
             prepare.setDate(1,java.sql.Date.valueOf(Arrumar_Data(conta.getData())));
             prepare.setString(2,conta.getDescricao());
-            prepare.setFloat(3,conta.getValor());
+            prepare.setDouble(3,conta.getValor());
             prepare.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -152,7 +151,7 @@ public class Bd {
             prepare = con.prepareStatement(UPDATE);
             prepare.setDate(1,java.sql.Date.valueOf(Arrumar_Data(conta.getData())));
             prepare.setString(2,conta.getDescricao());
-            prepare.setFloat(3,conta.getValor());
+            prepare.setDouble(3,conta.getValor());
             prepare.setInt(4,conta.getId());
             prepare.executeUpdate();
         }catch(SQLException e){
