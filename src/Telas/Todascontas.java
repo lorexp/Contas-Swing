@@ -81,6 +81,11 @@ Conta conta;
                 TabelaMouseClicked(evt);
             }
         });
+        Tabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TabelaKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabela);
 
         DataLabel.setText("Data");
@@ -161,9 +166,6 @@ Conta conta;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DescricaoLabel)
@@ -186,7 +188,10 @@ Conta conta;
                         .addGap(18, 18, 18)
                         .addComponent(Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
-                        .addComponent(Fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -339,6 +344,26 @@ Conta conta;
     private void Desc_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Desc_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Desc_textActionPerformed
+
+    private void TabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabelaKeyPressed
+        // TODO add your handling code here:
+        if(Tabela.getSelectedRowCount() == 1){
+            if(evt.getKeyCode() == 127){
+            Bd bd = new Bd();
+                try {
+                    bd.Deletar(array.get(Tabela.getSelectedRow()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Todascontas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            this.pegatudo();
+            Remover.setEnabled(false);
+            Editar.setEnabled(false);
+            Data_text.setText("");
+            Desc_text.setText("");
+            Valor_text.setText("");
+            }
+        }
+    }//GEN-LAST:event_TabelaKeyPressed
 
             
         
